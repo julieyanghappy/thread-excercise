@@ -22,16 +22,13 @@ public class WorkerContainer {
 	private WorkerContainer() {
 	}
 
-	public void init(ConcurrentLinkedQueue<Integer> queue, int workerCount) {
-		setQueue(queue);
+	public void init(int workerCount) {
+		queue = new ConcurrentLinkedQueue<Integer>();
 		
 		for (int i = 0; i < workerCount; i++) {
 			SenderWorker sw = new SenderWorker(this, i);
 			addSenderWorkers(sw);
 		}
-	}
-	private void setQueue(ConcurrentLinkedQueue<Integer> queue) {
-		this.queue = queue;
 	}
 	
 	public Integer poll() {
