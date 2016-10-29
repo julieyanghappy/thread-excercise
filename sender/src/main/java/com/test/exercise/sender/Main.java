@@ -24,6 +24,7 @@ public class Main {
 				try {
 					wc.add(Integer.parseInt(input[i]));
 				} catch (Exception e) {
+					e.printStackTrace();
 					wc.stop();
 					stop = true;
 				}

@@ -1,5 +1,7 @@
 package com.test.exercise.sender;
 
+import java.net.Socket;
+
 public class SenderWorker extends Thread {
 	private WorkerContainer workerContainer;
 	private int id;
@@ -38,5 +40,8 @@ public class SenderWorker extends Thread {
 	private void doWork(Integer number) throws Exception {
 		// Send the number here
 		System.out.println("Worker " + id + " is processing " + number);
+		Socket socket = new Socket("localhost", 9999);
+		socket.getOutputStream().write((number.toString() + "\n").getBytes());
+		socket.close();
 	}
 }
